@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+
+    <!-- 引入db.properties资源文件 -->
+    <properties resource="db.properties"></properties>
+
+    <settings>
+        <!-- 设置 log4j 输出日志  -->
+        <setting name="logImpl" value="LOG4J"/>
+    </settings>
+
+    <!-- 使用别名 -->
+    <typeAliases>
+        <package name="com.hxj.model"></package>
+    </typeAliases>
+
+    <!-- 环境 -->
+    <environments default="mysql">
+        <environment id="mysql">
+            <!-- jdbc的事务处理 -->
+            <transactionManager type="JDBC"></transactionManager>
+            <!-- 使用连接池 -->
+            <dataSource type="POOLED">
+                <property name="driver" value="${driver}"></property>
+                <property name="url" value="${url}"></property>
+                <property name="username" value="${username}"></property>
+                <property name="password" value="${password}"></property>
+            </dataSource>
+        </environment>
+    </environments>
+
+    <!-- 引用映射配置文件 -->
+    <mappers>
+        <!--<mapper resource="com/hxj/mapper/TableMapper.xml"></mapper>-->
+        <package name="com.hxj.mapper"></package>
+    </mappers>
+</configuration>
